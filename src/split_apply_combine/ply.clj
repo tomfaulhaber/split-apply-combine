@@ -21,14 +21,14 @@
 
 (defn exprs-to-fns 
   [group-by]
-  (if (coll? group-by)
-    (for [item group-by] 
-      (if (and (coll? item)
-               (coll? (second item))
-               (not (#{'fn 'fn*} (first (second item)))))
-        [(first item) (expr-to-fn (second item))]
-        item))
-    group-by))
+  (vec (if (coll? group-by)
+         (for [item group-by]
+           (if (and (coll? item)
+                    (coll? (second item))
+                    (not (#{'fn 'fn*} (first (second item)))))
+             [(first item) (expr-to-fn (second item))]
+             item))
+         group-by)))
 
 (defn split-ds 
   ""
@@ -56,13 +56,14 @@
         group-by-filter (complement (set group-by))] 
     (apply fast-conj-rows 
             (for [[group data] grouped-data]
-              (let [union-cols (concat group-by (filter group-by-filter (col-names data)))]
-                (dataset union-cols (map #(merge % group) (:rows data))))))))
+              (let [grouped-cols (zipmap group-by group)
+                    union-cols (concat group-by (filter group-by-filter (col-names data)))
+                (dataset union-cols (map #(merge % grouped-cols) (:rows data))))))))
 
 (defn ddply*
 "WRITE A DOC STRING"
   ([group-by fun]
-     (ddply group-by fun $data))
+     (ddply* group-by fun $data))
   ([group-by fun data]
      (let [group-by (if (coll? group-by) group-by [group-by])
            group-by (for [item group-by]
@@ -74,5 +75,7 @@
 
 (defmacro ddply
   "WRITE A DOC STRING"
-  [group-by fun data]
-  `(ddply* '~(exprs-to-fns group-by) ~fun ~data))
+  ([group-by fun]
+     `(ddply* ~(exprs-to-fns group-by) ~fun $data))
+  ([group-by fun data]
+     `(ddply* ~(exprs-to-fns group-by) ~fun ~data)))
