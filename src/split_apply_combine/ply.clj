@@ -64,11 +64,9 @@
   ([group-by fun]
      (ddply group-by fun $data))
   ([group-by fun data]
-     (let [_ (println group-by) 
-           group-by (if (coll? group-by) group-by [group-by]) 
+     (let [group-by (if (coll? group-by) group-by [group-by])
            group-by (for [item group-by]
-                      (if (coll? item) item [item item]))
-           _ (println group-by)] 
+                      (if (coll? item) item [item item]))]
        (->> data
            (split-ds (map second group-by))
            (apply-ds fun)
