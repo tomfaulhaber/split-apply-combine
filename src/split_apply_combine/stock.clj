@@ -5,7 +5,8 @@
             [clj-time.core :as time]
             [clj-time.format :as time-format]
             [incanter.io :as io]
-            [split-apply-combine.core :as sac]))
+            [split-apply-combine.core :as sac]
+            [split-apply-combine.ply :as ply]))
 
 (def ^:private yahoo-url-format "http://ichart.finance.yahoo.com/table.csv?s=~a&a=~d&b=~d&c=~d&d=~d&e=~d&f=~d&g=d&ignore=.csv")
 
@@ -36,9 +37,10 @@
 
 (defn add-changes
   "Add the day to day change in close price and the ratio of today's close to the first close"
+  [stocks]
   (ply/ddply 
    :Symbol 
    (sac/transform 
-    :Change (sac/diff0 :Close) 
-    :Relative (map #(/ % (first :Close)) :Close)) 
-   tech-stocks))
+    :Change    = (sac/diff0 :Close)
+    :Relative  = (map #(/ % (first :Close)) :Close))
+   stocks))

@@ -3,7 +3,8 @@
   (:require [incanter.charts :as chart]
             [incanter.io :as io]
             [clj-time.coerce :as coerce]
-            [split-apply-combine.core :as sac]))
+            [split-apply-combine.core :as sac]
+            [split-apply-combine.ply :as ply]))
 
 (def cpu-files [["10.0.1.101" "data/scdb_agent_10.0.1.101.cpu"]
                 ["10.0.1.102" "data/scdb_agent_10.0.1.102.cpu"]
@@ -16,18 +17,18 @@
   (doall
    (reduce conj-rows
            (for [[ip cpu-file] cpu-files] 
-             (do 
+             (do
                (println cpu-file)
                (->> (io/read-dataset cpu-file :delim \| :header true)
-                    (sac/colwise (partial map keyword) :core)
-                    (sac/colwise (partial map #(coerce/from-long (* % 1000))) :timestamp)
-                    (sac/add-identifier :ip ip)))))))
-
+                    ((sac/transform
+                      :core (map keyword :core)
+                      :timestamp (map #(coerce/from-long (* % 1000)) :timestamp)
+                      :ip (map (constantly ip) :timestamp)))))))))
 
 (defn normalize-cpu-data 
   "Normalize CPU results by % within the interval and add a load factor"
   [data] 
-  (ddply [:ip :core] #(sac/colwise :num sac/diff) data))
+  (ply/ddply [:ip :core] #(sac/colwise :num sac/diff %) data))
 
 (defn load-average 
   "Reduce each normalized CPU measurement across cores to compute a real load average for each machine."
