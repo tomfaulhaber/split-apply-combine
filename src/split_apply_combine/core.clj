@@ -47,21 +47,19 @@ numeric if its first row is numeric."
   (dataset column-names (apply (partial map vector) columns)))
 
 (defn colwise 
-  "Apply f to each of the columns in cols and produce a new dataset with the original columns 
-and the modified columns"
-  [f cols data]
-  (let [all-cols (col-names data) 
-        cols (cond 
-              (= cols :all)  all-cols
-              (= cols :num) (numeric-cols data)
-              (not (coll? cols)) [cols]
-              :else cols)
-        col-set (set cols)
-        columns (for [col all-cols :let [base ($ col data)]] 
-                  (if (col-set col)
-                    (f base)
-                    base))]
-    (dataset-from-columns all-cols columns)))
+  "Returns a function that applies f to each of the columns in cols and
+   produces a new dataset with only the modified columns"
+  [cols f]
+  (fn [data]
+    (let [cols (cond
+                (= cols :all)      (col-names data)
+                (= cols :num)      (numeric-cols data)
+                (not (coll? cols)) [cols]
+                :else              cols)
+          columns (for [col cols]
+                    (let [result (f ($ col data))]
+                      (if (coll? result) result [result])))]
+     (dataset-from-columns cols columns))))
 
 (defn add-identifier 
   "Add a constant identifier column to the dataset"
