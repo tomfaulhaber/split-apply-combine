@@ -79,3 +79,23 @@
      `(ddply* ~(exprs-to-fns group-by) ~fun $data))
   ([group-by fun data]
      `(ddply* ~(exprs-to-fns group-by) ~fun ~data)))
+
+(defn d_ply*
+  "WRITE A DOC STRING"
+  ([group-by fun]
+     (ddply* group-by fun $data))
+  ([group-by fun data]
+     (let [group-by (if (coll? group-by) group-by [group-by])
+           group-by (for [item group-by]
+                      (if (coll? item) item [item item]))]
+       (dorun
+        (->> data
+             (split-ds (map second group-by))
+             (apply-ds fun))))))
+
+(defmacro d_ply
+  "WRITE A DOC STRING"
+  ([group-by fun]
+     `(d_ply* ~(exprs-to-fns group-by) ~fun $data))
+  ([group-by fun data]
+     `(d_ply* ~(exprs-to-fns group-by) ~fun ~data)))
