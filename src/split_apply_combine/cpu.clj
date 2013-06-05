@@ -21,9 +21,9 @@
                (println cpu-file)
                (->> (io/read-dataset cpu-file :delim \| :header true)
                     ((sac/transform
-                      :core (map keyword :core)
-                      :timestamp (map #(coerce/from-long (* % 1000)) :timestamp)
-                      :ip (map (constantly ip) :timestamp)))))))))
+                      :core      =* (keyword :core)
+                      :timestamp =* (coerce/from-long (* :timestamp 1000))
+                      :ip        =  (map (constantly ip) :timestamp)))))))))
 
 (defn normalize-cpu-data 
   "Normalize CPU results by % within the interval and add a load factor"
