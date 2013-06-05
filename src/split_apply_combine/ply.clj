@@ -21,14 +21,14 @@
 
 (defn exprs-to-fns 
   [group-by]
-  (vec (if (coll? group-by)
-         (for [item group-by]
+  (if (coll? group-by)
+    (vec (for [item group-by]
            (if (and (coll? item)
                     (coll? (second item))
                     (not (#{'fn 'fn*} (first (second item)))))
              [(first item) (expr-to-fn (second item))]
-             item))
-         group-by)))
+             item)))
+    group-by))
 
 (defn split-ds 
   ""
@@ -55,9 +55,9 @@
   (let [group-by (if (coll? group-by) group-by [group-by])
         group-by-filter (complement (set group-by))] 
     (apply fast-conj-rows 
-            (for [[group data] grouped-data]
-              (let [grouped-cols (zipmap group-by group)
-                    union-cols (concat group-by (filter group-by-filter (col-names data)))
+           (for [[group data] grouped-data]
+             (let [grouped-cols (zipmap group-by group)
+                   union-cols (concat group-by (filter group-by-filter (col-names data)))]
                 (dataset union-cols (map #(merge % grouped-cols) (:rows data))))))))
 
 (defn ddply*
