@@ -15,6 +15,10 @@
    (binding [*out* w]
      (clojure.pprint/print-table (:column-names o) (:rows o))))
 
+;;; Block: Look at the data
+
+(def cpu-data (iio/read-dataset "data/scdb_agent_10.0.1.101.cpu" :delim \| :header true))
+
 ;;; Block: Load data
 
 (def cpu-data 
@@ -27,7 +31,7 @@
             ((sac/transform
               :core      =* (keyword :core)
               :timestamp =* (coerce/from-long (* :timestamp 1000))
-              :ip        =  (map (constantly ip) :timestamp))))))))
+              :ip        =* ip)))))))
 
 ;;; Block: Normalize data #1
 
@@ -51,14 +55,29 @@
                         (ply/ddply [:timestamp :ip] (sac/colwise :num sum) cpu-data)))
 
 ;;; Block: Graph the summary for each system
-(ply/d_ply :ip #(view (chart/bar-chart :timestamp :load :data % :title (str "CPU Load for " (first ($ :ip %))))) system-data)
+(ply/d_ply :ip 
+           #(view 
+             (chart/bar-chart :timestamp :load :data % 
+                              :title (str "CPU Load for " 
+                                          (first ($ :ip %))))) 
+           system-data)
 
-;;; Block: Get the mean for each system for by minute
-(def data-by-minute ($order :timestamp :asc
-                            (ply/ddply [[:timestamp (time/minus :timestamp (time/secs (time/sec :timestamp)))] :ip] 
-                                       (sac/colwise :num stats/mean) system-data)))
+;;; Block: Get the mean for each system for minute
+(def data-by-minute 
+  ($order :timestamp :asc
+          (ply/ddply [[:timestamp (time/minus 
+                                   :timestamp 
+                                   (time/secs (time/sec :timestamp)))] 
+                      :ip] 
+                     (sac/colwise :num stats/mean) 
+                     system-data)))
 
 ;;; Block: Graph the summary for each system by minute
-(ply/d_ply :ip #(view (chart/bar-chart :timestamp :load :data % :title (str "CPU Load for " (first ($ :ip %))))) data-by-minute)
+(ply/d_ply :ip 
+           #(view 
+             (chart/bar-chart :timestamp :load :data % 
+                              :title (str "CPU Load for " 
+                                          (first ($ :ip %)))))
+           data-by-minute)
 
 ;;; Block: End
