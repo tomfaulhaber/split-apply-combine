@@ -85,11 +85,12 @@ numeric if its first row is numeric."
 
 (defn col-or-keyword
   "If kw is the name of a column in data, return that column. Otherwise
-   just return kw itself."
-  [kw data]
+   just return kw itself. If map is true, we return an seq of keywords 
+   as long as their are rows in the data."
+  [kw map? data]
   (if (some #{kw} (col-names data))
     ($ kw data)
-    kw))
+    (if map? (repeat (nrow data) kw) kw)))
 
 (defn build-keyword-map
   "Find all the unique keywords in expr and make a gensymed symbol for each. Return 
@@ -117,13 +118,19 @@ numeric if its first row is numeric."
    This is a support function for the transform macro. The the documentation there 
    for the information on the available values for op."
   [op expr]
-  (let [data-param (gensym "data")
-        kw-map (build-keyword-map expr)] 
+  (let [data-param (gensym "data-")
+        dummy-param (gensym "dummy-")
+        kw-map (build-keyword-map expr)
+        have-map? (pos? (count kw-map))] 
     `(fn [~data-param]
-       (let [~@(apply concat (for [[kw kw-sym] kw-map] [kw-sym `(col-or-keyword ~kw ~data-param)]))]
+       (let [~@(apply concat (for [[kw kw-sym] kw-map] [kw-sym `(col-or-keyword ~kw ~(= op '=*) ~data-param)]))]
          ~(condp = op
             '= (convert-keywords expr kw-map)
-            '=* `(map (fn [~@(vals kw-map)] ~(convert-keywords expr kw-map)) ~@(vals kw-map))
+            '=* `(map (fn [~@(if have-map? (vals kw-map) [dummy-param])] 
+                        ~(convert-keywords expr kw-map)) 
+                      ~@(if have-map?
+                          (vals kw-map)
+                          [`(repeat (nrow ~data-param) nil)]))
             (throw (Exception. "transform expressions must use one of = or =* for the operator")))))))
 
 
@@ -142,7 +149,8 @@ numeric if its first row is numeric."
                                       (map (fn [val] (/ val (first close))) close)))
               stock-data)
 
-   For a version that allows for terser extression of the transforms, see the transfor macro."
+   For a version that allows for terser expression of the transforms, see the
+   transform macro."
   [& transforms]
   (let [pairs (partition 2 transforms)
         xform-cols (map first pairs)
