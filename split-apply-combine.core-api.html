@@ -1,0 +1,373 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>split-apply-combine.core - split-apply-combine API documentation</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <style>.menuWrapper{height: 36px;}</style>
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">split-apply-combine</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <span class="toc-header"><span id="project-name">split-apply-combine</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <div class="NamespaceTOC">
+      <span class="toc-header">Namespaces</span>
+      <ul id="left-sidebar-list">
+        <li><a href="split-apply-combine.core-api.html" class="wiki_link">split-apply-combine.core</a></li><li><a href="split-apply-combine.cpu-api.html" class="wiki_link">split-apply-combine.cpu</a></li><li><a href="split-apply-combine.ply-api.html" class="wiki_link">split-apply-combine.ply</a></li><li><a href="split-apply-combine.stock-api.html" class="wiki_link">split-apply-combine.stock</a></li>
+      </ul>
+    </div>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#toc0" style="margin-top: 3px;">Overview</a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#" style="margin-top: 3px;"></a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#" style="margin-top: 3px;"></a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#var-section" style="margin-top: 3px;">Vars and Functions</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/add-identifier">add-identifier</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/build-keyword-map">build-keyword-map</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/build-transform-fn">build-transform-fn</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/col-or-keyword">col-or-keyword</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/colwise">colwise</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/convert-keywords">convert-keywords</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/diff">diff</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/diff0">diff0</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/nrow">nrow</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/numeric-cols">numeric-cols</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/pr-data">pr-data</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/transform">transform</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/transform*">transform*</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/unique">unique</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.core/write-dataset-csv">write-dataset-csv</a>
+      
+    </div>
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="overview">API for <span id="split-apply-combine.core">split-apply-combine.core</span>
+  - <span id="header-project">split-apply-combine</span> <span id="header-version"></span>
+  </h1>
+
+<br />Full namespace name: <span id="long-name">split-apply-combine.core</span>
+<p></p>
+<h2>Overview</h2>
+
+<pre id="namespace-docstr">The general functions for working with data using the split apply combine model.</pre>
+
+
+<br />
+
+
+
+<div id="var-section">
+  <p></p>
+  <h2>Public Variables and Functions</h2>
+  <div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/add-identifier">add-identifier</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (add-identifier col-name val data)
+</pre>
+    <pre id="var-docstr">Add a constant identifier column to the dataset</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/build-keyword-map">build-keyword-map</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (build-keyword-map expr)
+</pre>
+    <pre id="var-docstr">Find all the unique keywords in expr and make a gensymed symbol for each. Return 
+a map of the keywords to their corresponding symbols. This is used as a support 
+function in the transform macro.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/build-transform-fn">build-transform-fn</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (build-transform-fn op expr)
+</pre>
+    <pre id="var-docstr">Builds a function for expr depending on op. The function will take a dataset
+and return the value of expr. Keywords will be interpreted as shorthand for the
+corresponding column in the dataset when there is one. Evaluation of the columns
+is factored out, so that it only happpens once no matter how many times the 
+keyword is referenced.
+
+This is a support function for the transform macro. The the documentation there 
+for the information on the available values for op.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/col-or-keyword">col-or-keyword</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (col-or-keyword kw map? data)
+</pre>
+    <pre id="var-docstr">If kw is the name of a column in data, return that column. Otherwise
+just return kw itself. If map is true, we return an seq of keywords 
+as long as their are rows in the data.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/colwise">colwise</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (colwise cols f)
+</pre>
+    <pre id="var-docstr">Returns a function that applies f to each of the columns in cols and
+produces a new dataset with only the modified columns</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/convert-keywords">convert-keywords</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (convert-keywords expr kw-map)
+</pre>
+    <pre id="var-docstr">Walk expr and change all the keywords into the symbol specified for that keyword
+in the kw-map. This is a support function for the transform macro.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/diff">diff</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (diff coll)
+</pre>
+    <pre id="var-docstr">Takes a seqable (coll) and returns a seq of the differences between each element.
+The resulting seq is one shorter than the input</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/diff0">diff0</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (diff0 coll)
+</pre>
+    <pre id="var-docstr">Like diff, but adds a zero as the first element in order to 
+have the result be the same length as coll</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/nrow">nrow</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (nrow)
+       (nrow data)
+</pre>
+    <pre id="var-docstr">Return the number of rows in a dataset</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/numeric-cols">numeric-cols</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (numeric-cols data)
+</pre>
+    <pre id="var-docstr">Return the names of the numeric columns from a dataset. A column is considered
+numeric if its first row is numeric.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/pr-data">pr-data</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (pr-data data)
+</pre>
+    <pre id="var-docstr">Use print-table to print a dataset in a nice tabular format</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/transform">transform</h2>
+    <span id="var-type">macro</span><br />
+    <pre id="var-usage">Usage: (transform &amp; transforms)
+</pre>
+    <pre id="var-docstr">Returns a function that transforms a dataset by changing or adding columns.
+
+Each transform is expressed as a triple:
+    column-name operator transform-expr
+
+There are two operators available:
+    =    Evaluates the expression on the whole dataset and return a result 
+         for the specified column.
+    =*   Evaluates the expression for each row of the row of the dataset and 
+         return a result for that row in the specified column (that is, 
+         perform an implicit map).
+
+Within each transform-expr, keywords will be interpreted as referring to the
+named column in the input dataset. The implicit sel operation is performed
+exactly once for each function invocation regardless of how many times the
+keyword is used in the transform-expr.
+
+If the column name was part of the original dataset, it is replaced in the output. 
+Otherwise, it is added to the output.
+
+Example:
+    ((transform
+       :Average  =* (/ (+ :Open :Close) 2)
+       :Change   = (diff0 :Close) 
+       :Relative = (map #(/ % (first :Close)) :Close)
+     stock-data)
+
+The transform macro is a wrapper around the transform* function. Sometimes, using
+transform* directly is a better choice.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/transform*">transform*</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (transform* &amp; transforms)
+</pre>
+    <pre id="var-docstr">Returns a function that transforms a dataset by changing or adding columns. 
+
+The transforms are in pairs with a column name and a transform function
+that will produce a the new value for that column. The transform functions will
+be passed a single argument, the dataset that transform* was called with.
+
+If the column name was part of the original dataset, it is replaced in the output. 
+Otherwise, it is added to the output.
+
+Example: ((transform* :Change #(sac/diff0 ($ :Close %)) 
+                      :Relative #(let [close ($ :Close %)] 
+                                   (map (fn [val] (/ val (first close))) close)))
+           stock-data)
+
+For a version that allows for terser expression of the transforms, see the
+transform macro.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/unique">unique</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (unique coll)
+       (unique coll sorted?)
+</pre>
+    <pre id="var-docstr">Returns unique values of a coll, sorted by default</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.core/write-dataset-csv">write-dataset-csv</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (write-dataset-csv file-name data)
+</pre>
+    <pre id="var-docstr">Writes a data set as a CSV file, with headers</pre>
+    
+    
+    
+  </div>
+</div>
+
+
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">Copyright 2013, Tom Faulhaber. Released under the Eclipse Public License.</div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>

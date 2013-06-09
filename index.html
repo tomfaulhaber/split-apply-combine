@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Overview - split-apply-combine API documentation</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <style>.menuWrapper{height: 36px;}</style>
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">split-apply-combine</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <span class="toc-header"><span id="project-name">split-apply-combine</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <div class="NamespaceTOC">
+      <span class="toc-header">Namespaces</span>
+      <ul id="left-sidebar-list">
+        <li><a href="split-apply-combine.core-api.html" class="wiki_link">split-apply-combine.core</a></li><li><a href="split-apply-combine.cpu-api.html" class="wiki_link">split-apply-combine.cpu</a></li><li><a href="split-apply-combine.ply-api.html" class="wiki_link">split-apply-combine.ply</a></li><li><a href="split-apply-combine.stock-api.html" class="wiki_link">split-apply-combine.stock</a></li>
+      </ul>
+    </div>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#split-apply-combine.core" style="margin-top: 3px;">split-apply-combine.core</a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#split-apply-combine.cpu" style="margin-top: 3px;">split-apply-combine.cpu</a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#split-apply-combine.ply" style="margin-top: 3px;">split-apply-combine.ply</a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#split-apply-combine.stock" style="margin-top: 3px;">split-apply-combine.stock</a>
+    
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="toc0">API Overview - <span id="header-project">split-apply-combine</span> <span id="header-version"></span></h1>
+<br />
+<div id="project-description">Sample Code for Tom Faulhaber's presentation on split-apply-combine at the June 2013 San Francisco Clojure meetup</div>
+
+<br />
+<div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="split-apply-combine.core">split-apply-combine.core</h2>
+  
+  <a href="split-apply-combine.core-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">The general functions for working with data using the split apply combine model.</pre>
+  
+  
+  
+  Contents:
+  <span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/add-identifier" id="var-tag">add-identifier</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/build-keyword-map" id="var-tag">build-keyword-map</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/build-transform-fn" id="var-tag">build-transform-fn</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/col-or-keyword" id="var-tag">col-or-keyword</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/colwise" id="var-tag">colwise</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/convert-keywords" id="var-tag">convert-keywords</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/diff" id="var-tag">diff</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/diff0" id="var-tag">diff0</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/nrow" id="var-tag">nrow</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/numeric-cols" id="var-tag">numeric-cols</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/pr-data" id="var-tag">pr-data</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/transform" id="var-tag">transform</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/transform*" id="var-tag">transform*</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/unique" id="var-tag">unique</a> </span><span id="var-link"><a href="split-apply-combine.core-api.html#split-apply-combine.core/write-dataset-csv" id="var-tag">write-dataset-csv</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="split-apply-combine.cpu">split-apply-combine.cpu</h2>
+  
+  <a href="split-apply-combine.cpu-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Routines to manipulate CPU load data from a 38 minute test in a small cluster.
+Thanks to SpaceCurve, Inc. (<a href="http://www.spacecurve.com">http://www.spacecurve.com</a>) for permission to use 
+this data.</pre>
+  
+  
+  
+  Contents:
+  <span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/cpu-files" id="var-tag">cpu-files</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/data-by-cpu" id="var-tag">data-by-cpu</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/load-average" id="var-tag">load-average</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/load-chart" id="var-tag">load-chart</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/load-cpu-data" id="var-tag">load-cpu-data</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/normalize-cpu-data" id="var-tag">normalize-cpu-data</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/read-to-render" id="var-tag">read-to-render</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/render-graphs" id="var-tag">render-graphs</a> </span><span id="var-link"><a href="split-apply-combine.cpu-api.html#split-apply-combine.cpu/rollup-to-minutes" id="var-tag">rollup-to-minutes</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="split-apply-combine.ply">split-apply-combine.ply</h2>
+  
+  <a href="split-apply-combine.ply-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Implementation of the split-apply-combine functions, similar to R's plyr library.</pre>
+  
+  
+  
+  Contents:
+  <span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/apply-ds" id="var-tag">apply-ds</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/combine-ds" id="var-tag">combine-ds</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/d_ply" id="var-tag">d_ply</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/d_ply*" id="var-tag">d_ply*</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/ddply" id="var-tag">ddply</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/ddply*" id="var-tag">ddply*</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/fast-conj-rows" id="var-tag">fast-conj-rows</a> </span><span id="var-link"><a href="split-apply-combine.ply-api.html#split-apply-combine.ply/split-ds" id="var-tag">split-ds</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="split-apply-combine.stock">split-apply-combine.stock</h2>
+  
+  <a href="split-apply-combine.stock-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Code for manipulating stock tables pulled from yahoo finance.</pre>
+  
+  
+  
+  Contents:
+  <span id="var-link"><a href="split-apply-combine.stock-api.html#split-apply-combine.stock/add-changes" id="var-tag">add-changes</a> </span><span id="var-link"><a href="split-apply-combine.stock-api.html#split-apply-combine.stock/load-yahoo-data" id="var-tag">load-yahoo-data</a> </span><span id="var-link"><a href="split-apply-combine.stock-api.html#split-apply-combine.stock/read-saved-data" id="var-tag">read-saved-data</a> </span><br />
+  
+</div>
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">Copyright 2013, Tom Faulhaber. Released under the Eclipse Public License.</div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>

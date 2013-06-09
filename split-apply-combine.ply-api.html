@@ -1,0 +1,333 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>split-apply-combine.ply - split-apply-combine API documentation</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <style>.menuWrapper{height: 36px;}</style>
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">split-apply-combine</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <span class="toc-header"><span id="project-name">split-apply-combine</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <div class="NamespaceTOC">
+      <span class="toc-header">Namespaces</span>
+      <ul id="left-sidebar-list">
+        <li><a href="split-apply-combine.core-api.html" class="wiki_link">split-apply-combine.core</a></li><li><a href="split-apply-combine.cpu-api.html" class="wiki_link">split-apply-combine.cpu</a></li><li><a href="split-apply-combine.ply-api.html" class="wiki_link">split-apply-combine.ply</a></li><li><a href="split-apply-combine.stock-api.html" class="wiki_link">split-apply-combine.stock</a></li>
+      </ul>
+    </div>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#toc0" style="margin-top: 3px;">Overview</a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#" style="margin-top: 3px;"></a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#" style="margin-top: 3px;"></a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#var-section" style="margin-top: 3px;">Vars and Functions</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/apply-ds">apply-ds</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/combine-ds">combine-ds</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/d_ply">d_ply</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/d_ply*">d_ply*</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/ddply">ddply</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/ddply*">ddply*</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/fast-conj-rows">fast-conj-rows</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.ply/split-ds">split-ds</a>
+      
+    </div>
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="overview">API for <span id="split-apply-combine.ply">split-apply-combine.ply</span>
+  - <span id="header-project">split-apply-combine</span> <span id="header-version"></span>
+  </h1>
+
+<br />Full namespace name: <span id="long-name">split-apply-combine.ply</span>
+<p></p>
+<h2>Overview</h2>
+
+<pre id="namespace-docstr">Implementation of the split-apply-combine functions, similar to R's plyr library.</pre>
+
+
+<br />
+
+
+
+<div id="var-section">
+  <p></p>
+  <h2>Public Variables and Functions</h2>
+  <div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/apply-ds">apply-ds</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (apply-ds fun grouped-data)
+</pre>
+    <pre id="var-docstr">Apply fun to each group in grouped-data returning a sequence of pairs of the
+original group-keys and the result of applying the function the dataset. See
+split-ds for information on the grouped-data data structure.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/combine-ds">combine-ds</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (combine-ds group-by grouped-data)
+</pre>
+    <pre id="var-docstr">Combine the datasets in grouped-data into a single dataset including the 
+columns specified in the group-by argument as having the values found in
+the keys in the grouped data.
+
+If there are columns that are in both the key and the dataset, the values
+in the key have precedence.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/d_ply">d_ply</h2>
+    <span id="var-type">macro</span><br />
+    <pre id="var-usage">Usage: (d_ply group-by fun)
+       (d_ply group-by fun data)
+</pre>
+    <pre id="var-docstr">Split-apply-combine from datasets to nothing. This version ignores the output of
+fun and is used for fun's side effects. This macro is a wrapper on d_ply*
+which provides translation of simple column-referencing expressions in the group-by
+argument.
+
+Splits data into a the group of datasets as specified by the group-by argument,
+applies fun to each of the resulting datasets and then drops the result.
+
+The group-by argument can be a keyword or collection of keywords which specify
+the columns to group by. It can also include pairs [keyword keyfn] where the 
+function keyfun is applied to each row to generate the key for that row. When
+the groups are combined, keyword is used as the column name for the resulting
+column. The two types of group-by specifications can be mixed.
+
+The result of the apply function can contain the same columns names as the 
+original dataset or different ones. It can contain the same number of rows as
+the original, a different number, or a single row.
+
+If data is not specified, it defaults to the currently bound value of $data.
+
+Example:
+
+(d_ply :Symbol 
+       #(view (bar-chart :Date :Volume :data %)) 
+       stock-data)</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/d_ply*">d_ply*</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (d_ply* group-by fun)
+       (d_ply* group-by fun data)
+</pre>
+    <pre id="var-docstr">Split-apply-combine from datasets to nothing. This version ignores the output of
+fun and is used for fun's side effects. 
+
+Splits data into a the group of datasets as specified by the group-by argument,
+applies fun to each of the resulting datasets and then drops the result.
+
+The group-by argument can be a keyword or collection of keywords which specify
+the columns to group by. It can also include pairs [keyword keyfn] where the 
+function keyfun is applied to each row to generate the key for that row. When
+the groups are combined, keyword is used as the column name for the resulting
+column. The two types of group-by specifications can be mixed.
+
+The result of the apply function can contain the same columns names as the 
+original dataset or different ones. It can contain the same number of rows as
+the original, a different number, or a single row.
+
+If data is not specified, it defaults to the currently bound value of $data.
+
+Example:
+
+(d_ply* :Symbol 
+        #(view (bar-chart :Date :Volume :data %)) 
+        stock-data)</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/ddply">ddply</h2>
+    <span id="var-type">macro</span><br />
+    <pre id="var-usage">Usage: (ddply group-by fun)
+       (ddply group-by fun data)
+</pre>
+    <pre id="var-docstr">Split-apply-combine from datasets to datasets. This macro is a wrapper on ddply*
+which provides translation of simple column-referencing expressions in the group-by
+argument.
+
+Splits data into a the group of datasets as specified by the group-by argument,
+applies fun to each of the resulting datasets and combines the result of that
+back into a single dataset.
+
+The group-by argument can be a keyword or collection of keywords which specify
+the columns to group by. It can also include pairs [keyword key-expr] where the 
+exression key-expr is tranformed to a function and in expr are expanded to accessors
+on rows. The resulting function is applied to each row to generate the key for 
+that row. When the groups are combined, keyword is used as the column name for 
+the resulting column. The two types of group-by specifications can be mixed.
+
+The result of the apply function can contain the same columns names as the 
+original dataset or different ones. It can contain the same number of rows as
+the original, a different number, or a single row.
+
+If data is not specified, it defaults to the currently bound value of $data.
+
+Examples:
+
+(ddply :Symbol 
+       (transform :Change = (diff0 :Close)) 
+       stock-data)
+
+(ddply [[:Month ((juxt year month) :timestamp]]]
+       (colwise :Volume sum)
+       stock-data)</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/ddply*">ddply*</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (ddply* group-by fun)
+       (ddply* group-by fun data)
+</pre>
+    <pre id="var-docstr">Split-apply-combine from datasets to datasets.
+
+Splits data into a the group of datasets as specified by the group-by argument,
+applies fun to each of the resulting datasets and combines the result of that
+back into a single dataset.
+
+The group-by argument can be a keyword or collection of keywords which specify
+the columns to group by. It can also include pairs [keyword keyfn] where the 
+function keyfun is applied to each row to generate the key for that row. When
+the groups are combined, keyword is used as the column name for the resulting
+column. The two types of group-by specifications can be mixed.
+
+The result of the apply function can contain the same columns names as the 
+original dataset or different ones. It can contain the same number of rows as
+the original, a different number, or a single row.
+
+If data is not specified, it defaults to the currently bound value of $data.
+
+Examples:
+
+(ddply* :Symbol
+         (transform :Change = (diff0 :Close))
+         stock-data)
+
+(ddply* [[:Month #((juxt year month) (:timestamp %)]]
+        (colwise :Volume sum)
+        stock-data)</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/fast-conj-rows">fast-conj-rows</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (fast-conj-rows &amp; datasets)
+</pre>
+    <pre id="var-docstr">A simple version of conj-rows that runs much faster</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.ply/split-ds">split-ds</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (split-ds group-by-fns data)
+</pre>
+    <pre id="var-docstr">Perform a split operation on data, which must be a dataset, using the group-by-fns 
+to choose bins. group-by-fns can either be a single function or a collection of
+functions. In the latter case, the results will be combined to create a key for
+the bin. Returns a map of the group-by-fns results to datasets including all 
+the rows that had the given result.
+
+Note that keyword column names are the most common functions to use for the 
+group-by.</pre>
+    
+    
+    
+  </div>
+</div>
+
+
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">Copyright 2013, Tom Faulhaber. Released under the Eclipse Public License.</div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>

@@ -1,0 +1,233 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>split-apply-combine.cpu - split-apply-combine API documentation</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <style>.menuWrapper{height: 36px;}</style>
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">split-apply-combine</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <span class="toc-header"><span id="project-name">split-apply-combine</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <div class="NamespaceTOC">
+      <span class="toc-header">Namespaces</span>
+      <ul id="left-sidebar-list">
+        <li><a href="split-apply-combine.core-api.html" class="wiki_link">split-apply-combine.core</a></li><li><a href="split-apply-combine.cpu-api.html" class="wiki_link">split-apply-combine.cpu</a></li><li><a href="split-apply-combine.ply-api.html" class="wiki_link">split-apply-combine.ply</a></li><li><a href="split-apply-combine.stock-api.html" class="wiki_link">split-apply-combine.stock</a></li>
+      </ul>
+    </div>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#toc0" style="margin-top: 3px;">Overview</a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#" style="margin-top: 3px;"></a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#" style="margin-top: 3px;"></a>
+    
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#var-section" style="margin-top: 3px;">Vars and Functions</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/cpu-files">cpu-files</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/data-by-cpu">data-by-cpu</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/load-average">load-average</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/load-chart">load-chart</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/load-cpu-data">load-cpu-data</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/normalize-cpu-data">normalize-cpu-data</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/read-to-render">read-to-render</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/render-graphs">render-graphs</a>
+      
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a class="toc-entry-anchor" href="#split-apply-combine.cpu/rollup-to-minutes">rollup-to-minutes</a>
+      
+    </div>
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="overview">API for <span id="split-apply-combine.cpu">split-apply-combine.cpu</span>
+  - <span id="header-project">split-apply-combine</span> <span id="header-version"></span>
+  </h1>
+
+<br />Full namespace name: <span id="long-name">split-apply-combine.cpu</span>
+<p></p>
+<h2>Overview</h2>
+
+<pre id="namespace-docstr">Routines to manipulate CPU load data from a 38 minute test in a small cluster.
+Thanks to SpaceCurve, Inc. (<a href="http://www.spacecurve.com">http://www.spacecurve.com</a>) for permission to use 
+this data.</pre>
+
+
+<br />
+
+
+
+<div id="var-section">
+  <p></p>
+  <h2>Public Variables and Functions</h2>
+  <div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/cpu-files">cpu-files</h2>
+    <span id="var-type">var</span><br />
+    <pre id="var-usage"></pre>
+    <pre id="var-docstr">The list of IP address, file name pairs that we used for our CPU load demos.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/data-by-cpu">data-by-cpu</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (data-by-cpu cpu data)
+</pre>
+    <pre id="var-docstr">Take raw data read from a single file and get the data for a single core, as 
+differences between samples.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/load-average">load-average</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (load-average cpu-data)
+</pre>
+    <pre id="var-docstr">Reduce each normalized CPU measurement across cores to compute a real load average for each machine.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/load-chart">load-chart</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (load-chart cpu data)
+</pre>
+    <pre id="var-docstr">Do a simple load chart for a single core.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/load-cpu-data">load-cpu-data</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (load-cpu-data)
+</pre>
+    <pre id="var-docstr">Load the CPU data from each of the files specified in cpu-files. 
+We normalize it slightly by adding a column with the IP address,
+converting the times to JODA DateTimes and turning the core ids
+into keywords.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/normalize-cpu-data">normalize-cpu-data</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (normalize-cpu-data cpu-data)
+</pre>
+    <pre id="var-docstr">Normalize CPU results by % within the interval and add a load factor</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/read-to-render">read-to-render</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (read-to-render)
+</pre>
+    <pre id="var-docstr">Read the data from the files listed in cpu-data and render mean load by minute.</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/render-graphs">render-graphs</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (render-graphs data)
+</pre>
+    <pre id="var-docstr">Draw a load graph for each node represented in data</pre>
+    
+    
+    
+  </div><div id="var-entry">
+    <br />
+    <hr />
+    <h2 id="split-apply-combine.cpu/rollup-to-minutes">rollup-to-minutes</h2>
+    <span id="var-type">function</span><br />
+    <pre id="var-usage">Usage: (rollup-to-minutes data)
+</pre>
+    <pre id="var-docstr">Divide the data by IP and take the mean load for each minute's data</pre>
+    
+    
+    
+  </div>
+</div>
+
+
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">Copyright 2013, Tom Faulhaber. Released under the Eclipse Public License.</div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>
