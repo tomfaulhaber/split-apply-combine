@@ -8,4 +8,5 @@
                  [incanter "1.5.0-SNAPSHOT"]
                  [clj-http "0.7.2"]     ;not sure if I still need this
                  [clj-time "0.5.1"]]
-  :jvm-opts ["-Xmx4g"])
+  :jvm-opts ["-Xmx4g"]
+  :autodoc {:copyright "Copyright 2013, Tom Faulhaber. Released under the Eclipse Public License."})
